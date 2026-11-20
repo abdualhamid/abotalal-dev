@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Send, MessageCircle, ArrowRight, Paperclip, Image as ImageIcon, FileText, X, Download } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -33,6 +33,7 @@ const MessagesPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isSending, setIsSending] = useState(false);
   const [adminId, setAdminId] = useState<string | null>(null);
+  const [chatError, setChatError] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -40,13 +41,16 @@ const MessagesPage: React.FC = () => {
 
   useEffect(() => {
     const fetchAdmin = async () => {
-      const { data } = await supabase.from('user_roles').select('user_id').eq('role', 'admin').limit(1).single();
-      if (data) setAdminId(data.user_id);
+      const { data, error } = await supabase.rpc('get_support_admin_id');
+      if (error || !data) {
+        setChatError('تعذر الاتصال بالإدارة. أعد تحميل الصفحة والمحاولة.');
+        setIsLoading(false);
+      } else setAdminId(data);
     };
-    fetchAdmin();
-  }, []);
+    if (user) void fetchAdmin();
+  }, [user?.id]);
 
-  const fetchMessages = async () => {
+  const fetchMessages = useCallback(async () => {
     if (!user || !adminId) return;
     const { data, error } = await supabase
       .from('messages')
@@ -59,28 +63,32 @@ const MessagesPage: React.FC = () => {
       const unread = data.filter((m: any) => m.sender_id === adminId && !m.is_read).map((m: any) => m.id);
       if (unread.length > 0) await supabase.from('messages').update({ is_read: true }).in('id', unread);
     }
+    if (error) setChatError('تعذر تحميل الرسائل. أعد المحاولة.');
+    else setChatError(null);
     setIsLoading(false);
-  };
+  }, [user?.id, adminId]);
 
-  useEffect(() => { if (adminId) fetchMessages(); }, [adminId, user]);
+  useEffect(() => { if (adminId) fetchMessages(); }, [fetchMessages, adminId]);
   useEffect(() => { messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [messages]);
 
   useEffect(() => {
     if (!user || !adminId) return;
-    const channel = supabase.channel('user-chat-rt')
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'messages' }, () => fetchMessages())
+    const channel = supabase.channel(`user-chat-${user.id}-${crypto.randomUUID()}`)
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'messages', filter: `receiver_id=eq.${user.id}` }, () => { void fetchMessages(); })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'messages', filter: `sender_id=eq.${user.id}` }, () => { void fetchMessages(); })
       .subscribe();
-    return () => { supabase.removeChannel(channel); };
-  }, [user, adminId]);
+    const timer = window.setInterval(() => { void fetchMessages(); }, 15000);
+    return () => { window.clearInterval(timer); void supabase.removeChannel(channel); };
+  }, [user?.id, adminId, fetchMessages]);
 
   const handleSend = async () => {
-    if (!newMessage.trim() || !user || !adminId) return;
+    if (!newMessage.trim() || !user || !adminId || isSending || isUploading) return;
     setIsSending(true);
     const { error } = await supabase.from('messages').insert({
       sender_id: user.id, receiver_id: adminId, subject: 'رسالة', content: newMessage.trim(),
     });
     if (error) toast({ title: 'خطأ', description: 'فشل إرسال الرسالة', variant: 'destructive' });
-    else setNewMessage('');
+    else { setNewMessage(''); await fetchMessages(); }
     setIsSending(false);
   };
 
@@ -103,11 +111,13 @@ const MessagesPage: React.FC = () => {
     else if (file.type.startsWith('video/')) mediaType = 'video';
     else if (file.type.startsWith('audio/')) mediaType = 'audio';
 
-    await supabase.from('messages').insert({
+    const { error: sendError } = await supabase.from('messages').insert({
       sender_id: user.id, receiver_id: adminId, subject: 'ملف',
       content: file.name, media_url: publicUrl, media_type: mediaType, file_name: file.name,
     });
 
+    if (sendError) toast({ title: 'تعذر إرسال الملف', variant: 'destructive' });
+    else await fetchMessages();
     setIsUploading(false);
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
@@ -117,7 +127,7 @@ const MessagesPage: React.FC = () => {
     if (msg.media_type === 'image') {
       return (
         <img src={msg.media_url} alt={msg.file_name || ''} className="max-w-[200px] rounded-lg mt-1 cursor-pointer hover:opacity-90 transition-opacity"
-          onClick={() => setPreviewMedia(msg.media_url!)} />
+          onClick={() => setPreviewMedia(msg.media_url || null)} />
       );
     }
     if (msg.media_type === 'video') {
@@ -148,15 +158,13 @@ const MessagesPage: React.FC = () => {
           </div>
           <div>
             <h1 className="font-bold text-foreground">مراسلة الإدارة</h1>
-            <div className="flex items-center gap-1">
-              <div className="w-2 h-2 rounded-full bg-emerald-500" />
-              <p className="text-xs text-emerald-500">متصل</p>
-            </div>
+            <p className="text-xs text-muted-foreground">خدمة العملاء</p>
           </div>
         </div>
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 space-y-3 pb-36">
+        {chatError && <p role="alert" className="text-sm text-destructive">{chatError}</p>}
         {isLoading ? (
           <div className="flex justify-center py-12"><div className="animate-spin w-8 h-8 border-2 border-primary border-t-transparent rounded-full" /></div>
         ) : messages.length === 0 ? (
@@ -172,7 +180,7 @@ const MessagesPage: React.FC = () => {
               <div className={`max-w-[80%] rounded-2xl px-4 py-2.5 ${
                 isMe(msg) ? 'bg-primary text-primary-foreground rounded-bl-sm' : 'bg-secondary text-foreground rounded-br-sm'
               }`}>
-                {!msg.media_url && <p className="text-sm leading-relaxed">{msg.content}</p>}
+                {!msg.media_url && <p className="text-sm leading-relaxed whitespace-pre-wrap break-words [overflow-wrap:anywhere]">{msg.content}</p>}
                 {renderMedia(msg)}
                 <div className="flex items-center gap-1 mt-1">
                   <p className={`text-[10px] ${isMe(msg) ? 'text-primary-foreground/60' : 'text-muted-foreground'}`}>
@@ -200,13 +208,13 @@ const MessagesPage: React.FC = () => {
       {/* Input */}
       <div className="fixed bottom-16 left-0 right-0 bg-card/95 backdrop-blur-md border-t border-border p-3 z-30">
         <form onSubmit={e => { e.preventDefault(); handleSend(); }} className="flex items-center gap-2">
-          <Button type="button" variant="ghost" size="icon" className="shrink-0" onClick={() => fileInputRef.current?.click()} disabled={isUploading}>
+          <Button type="button" variant="ghost" size="icon" className="shrink-0" onClick={() => fileInputRef.current?.click()} disabled={isUploading || isSending || !adminId}>
             <Paperclip className="w-5 h-5 text-muted-foreground" />
           </Button>
           <input ref={fileInputRef} type="file" className="hidden" accept="image/*,video/*,audio/*,.pdf,.doc,.docx,.txt,.zip" onChange={handleFileUpload} />
-          <Input value={newMessage} onChange={e => setNewMessage(e.target.value)} placeholder={isUploading ? 'جاري الرفع...' : 'اكتب رسالتك...'}
-            className="flex-1 rounded-full bg-secondary border-0" dir="rtl" disabled={isUploading} />
-          <Button type="submit" size="icon" className="rounded-full shrink-0" disabled={!newMessage.trim() || isSending || isUploading}>
+          <Input value={newMessage} onChange={e => setNewMessage(e.target.value)} aria-label="نص الرسالة" placeholder={isUploading ? 'جاري الرفع...' : 'اكتب رسالتك...'}
+            className="flex-1 rounded-full bg-secondary border-0" dir="rtl" disabled={isUploading || isSending || !adminId} />
+          <Button type="submit" size="icon" className="rounded-full shrink-0" aria-label="إرسال الرسالة" disabled={!newMessage.trim() || isSending || isUploading || !adminId}>
             <Send className="w-4 h-4" />
           </Button>
         </form>

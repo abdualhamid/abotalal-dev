@@ -49,7 +49,7 @@ export const useMessages = () => {
     // Subscribe to realtime messages
     if (user) {
       const channel = supabase
-        .channel('messages-changes')
+        .channel(`messages-changes-${user.id}-${crypto.randomUUID()}`)
         .on(
           'postgres_changes',
           {

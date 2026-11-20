@@ -142,8 +142,8 @@ const AdminDashboard: React.FC = () => {
                 <TabsTrigger value="slides" className="flex items-center gap-1 text-xs py-2 px-2">
                   <Image className="w-4 h-4" /><span className="hidden sm:inline">السلايدر</span>
                 </TabsTrigger>
-                <TabsTrigger value="chat" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <MessageSquare className="w-4 h-4" /><span className="hidden sm:inline">المراسلات</span>
+                <TabsTrigger value="chat" aria-label="المراسلات" className="flex items-center gap-1 text-xs py-2 px-2">
+                  <MessageSquare className="w-4 h-4" /><span>المراسلات</span>
                 </TabsTrigger>
                 <TabsTrigger value="apps" className="flex items-center gap-1 text-xs py-2 px-2">
                   <Smartphone className="w-4 h-4" /><span className="hidden sm:inline">التطبيقات</span>
