@@ -1,73 +1,267 @@
-# Welcome to your Lovable project
+# Abotalal
 
-## Project info
+أنشئ تطبيقًا احترافيًا متكاملًا باسم:
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+«عبدالحميد داوؤد»
 
-## How can I edit this code?
+تطبيق عربي بالكامل، مخصص لتقديم خدمات الدعاية والإعلان والتسويق الإلكتروني، ويشمل ما يلي:
 
-There are several ways of editing your application.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+🔷 هوية وتصميم التطبيق
 
-Changes made via Lovable will be committed automatically to this repo.
+لغة التطبيق: العربية (RTL)
 
-**Use your preferred IDE**
+الخط المستخدم: Tajawal
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+تصميم حديث، فخم، جذاب، احترافي
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+متجاوب مع جميع الشاشات (هواتف – تابلت)
 
-Follow these steps:
+يدعم الوضع الفاتح والوضع المظلم
+
+بدون أخطاء برمجية، جاهز للنشر والاستخدام
+
+
+
+---
+
+🔷 شاشة البداية (Splash Screen)
+
+تظهر عند فتح التطبيق لمدة 5 ثوانٍ
+
+تحتوي على:
+
+اسم التطبيق: عبدالحميد داوؤد
+
+وصف مختصر للخدمات
+
+ترحيب احترافي بالمستخدم
+
+عرض الوقت – التاريخ – اليوم
+
+
+انتقال تلقائي بعد ذلك إلى شاشة:
+
+تسجيل الدخول
+
+أو التسجيل
+
+أو الدخول كـ ضيف
+
+
+
+
+---
+
+🔷 نظام التسجيل والدخول
+
+تسجيل حساب جديد
+
+تسجيل دخول
+
+خيار الدخول كضيف
+
+واجهة سهلة وآمنة
+
+
+
+---
+
+🔷 القائمة العلوية (Top Bar)
+
+اسم التطبيق مع شعار احترافي
+
+أيقونة الإشعارات
+
+أيقونة المراسلة
+
+زر واتساب مباشر
+
+
+
+---
+
+🔷 الواجهة الرئيسية (Home)
+
+1. سلايدر احترافي متحرك
+
+يعرض معلومات وخدمات التطبيق
+
+
+
+2. شريط أخبار منزلق
+
+يعرض آخر الأخبار والتحديثات وكل جديد
+
+
+
+3. أقسام شبكية (Grid)
+
+بتصميم احترافي
+
+حواف بسيطة ومموجة
+
+أيقونات واضحة وجذابة
+
+
+
+
+
+---
+
+🔷 أقسام التطبيق (جميعها تعمل داخل التطبيق)
+
+الدعاية والإعلان
+
+التسويق الإلكتروني
+
+إدارة وتمويل الصفحات
+
+إدارة المواقع الإلكترونية
+
+إدارة التطبيقات
+
+خدمات المونتاج
+
+الخدمات الأمنية والحماية
+
+خدمات الطباعة
+
+معرض أعمالنا
+
+من نحن
+
+حجز الخدمات
+
+اتصل بنا
+
+المساعد الذكي
+
+
+
+---
+
+🔷 المساعد الذكي
+
+مساعد احترافي داخل التطبيق
+
+يرد على جميع أسئلة المستخدمين
+
+متخصص في:
+
+خدمات الإعلان
+
+التسويق
+
+الإدارة
+
+الحماية
+
+المونتاج
+
+
+واجهة محادثة ذكية وسلسة
+
+
+
+---
+
+🔷 القائمة الجانبية (Drawer Menu)
+
+تصميم احترافي
+
+تشمل:
+
+جميع الأقسام
+
+جميع الخدمات
+
+روابط داخلية
+
+
+تنقل سلس بين الصفحات
+
+
+
+---
+
+🔷 القائمة السفلية الثابتة (Bottom Navigation)
+
+تشمل:
+
+الرئيسية
+
+من نحن
+
+حجز
+
+اتصل بنا
+
+المساعد الذكي
+
+
+
+---
+
+🔷 الطلب والحجز
+
+جميع أزرار:
+
+طلب خدمة
+
+حجز
+
+تواصل
+
+
+يتم تحويلها مباشرة إلى واتساب
+
+الرقم: 778215553
+
+
+
+---
+
+🔷 متطلبات إضافية
+
+جميع الصفحات تفتح داخل التطبيق
+
+جميع الأقسام مرتبطة ببعضها
+
+تجربة مستخدم سلسة وسريعة
+
+كود منظم وقابل للتطوير
+
+التطبيق جاهز بالكامل بدون نقص
+
+ازرار الرجوع من الصفحات
+
+---
+
+🔹 النتيجة المطلوبة:
+تطبيق احترافي متكامل باسم عبدالحميد داوؤد، قوي في التصميم، غني بالمميزات، جاهز للاستخدام التجاري والنشر.
+
+This project was built with [Lovable](https://lovable.dev).
+
+**Live app**: https://abotalal-dev.lovable.app
+
+## Build with Lovable
+
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/97339acb-e9f4-4e51-9e2e-986e05b1071f).
+
+- **Ship faster**: describe what you want to build and Lovable handles the code.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+
+## Development
+
+Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
+git clone <this-repository-url>
+cd <repository-name>
 npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
