@@ -1,4 +1,6 @@
 import React from 'react';
+import AppInstallButton from '@/components/AppInstallButton';
+import { useAppInstall } from '@/hooks/useAppInstall';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Sparkles, Moon, Sun, LogOut, ChevronLeft, LayoutDashboard } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -21,6 +23,7 @@ interface DrawerMenuProps {
 
 const DrawerMenu: React.FC<DrawerMenuProps> = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
+  const installController = useAppInstall();
   const { theme, toggleTheme } = useTheme();
   const { user, profile, logout } = useAuth();
   const { isAdmin } = useAdmin();
@@ -79,6 +82,7 @@ const DrawerMenu: React.FC<DrawerMenuProps> = ({ isOpen, onClose }) => {
 
             {/* Menu Items */}
             <div className="flex-1 overflow-y-auto p-4 space-y-2 scrollbar-custom max-h-[calc(100vh-280px)]">
+              <AppInstallButton controller={installController} />
               {/* Admin Dashboard - Only visible to admins */}
               {isAdmin && (
                 <motion.button initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
