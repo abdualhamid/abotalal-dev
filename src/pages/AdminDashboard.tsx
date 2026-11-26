@@ -116,64 +116,64 @@ const AdminDashboard: React.FC = () => {
           </div>
 
           <Tabs defaultValue="stats" className="w-full" dir="rtl">
-            <div className="overflow-x-auto mb-6">
-              <TabsList className="inline-flex w-auto min-w-full h-auto gap-1 p-1">
-                <TabsTrigger value="stats" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <BarChart3 className="w-4 h-4" /><span className="hidden sm:inline">الإحصائيات</span>
+            <div className="mb-6">
+              <TabsList aria-label="أقسام لوحة التحكم" className="grid h-auto w-full grid-cols-2 gap-3 rounded-none bg-transparent p-0 sm:grid-cols-3 lg:grid-cols-4">
+                <TabsTrigger value="stats" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <BarChart3 aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">الإحصائيات</span>
                 </TabsTrigger>
-                <TabsTrigger value="bookings" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <Calendar className="w-4 h-4" /><span className="hidden sm:inline">الحجوزات</span>
+                <TabsTrigger value="bookings" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <Calendar aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">الحجوزات</span>
                 </TabsTrigger>
-                <TabsTrigger value="orders" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <Package className="w-4 h-4" /><span className="hidden sm:inline">الطلبات</span>
+                <TabsTrigger value="orders" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <Package aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">الطلبات</span>
                 </TabsTrigger>
-                <TabsTrigger value="packages" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <Crown className="w-4 h-4" /><span className="hidden sm:inline">الباقات</span>
+                <TabsTrigger value="packages" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <Crown aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">الباقات</span>
                 </TabsTrigger>
-                <TabsTrigger value="services" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <Settings className="w-4 h-4" /><span className="hidden sm:inline">الخدمات</span>
+                <TabsTrigger value="services" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <Settings aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">الخدمات</span>
                 </TabsTrigger>
-                <TabsTrigger value="users" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <Users className="w-4 h-4" /><span className="hidden sm:inline">المستخدمون</span>
+                <TabsTrigger value="users" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <Users aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">المستخدمون</span>
                 </TabsTrigger>
-                <TabsTrigger value="news" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <Newspaper className="w-4 h-4" /><span className="hidden sm:inline">الأخبار</span>
+                <TabsTrigger value="news" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <Newspaper aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">الأخبار</span>
                 </TabsTrigger>
-                <TabsTrigger value="slides" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <Image className="w-4 h-4" /><span className="hidden sm:inline">السلايدر</span>
+                <TabsTrigger value="slides" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <Image aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">السلايدر</span>
                 </TabsTrigger>
-                <TabsTrigger value="chat" aria-label="المراسلات" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <MessageSquare className="w-4 h-4" /><span>المراسلات</span>
+                <TabsTrigger value="chat" aria-label="المراسلات" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <MessageSquare aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">المراسلات</span>
                 </TabsTrigger>
-                <TabsTrigger value="apps" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <Smartphone className="w-4 h-4" /><span className="hidden sm:inline">التطبيقات</span>
+                <TabsTrigger value="apps" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <Smartphone aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">التطبيقات</span>
                 </TabsTrigger>
-                <TabsTrigger value="channels" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <Radio className="w-4 h-4" /><span className="hidden sm:inline">البث</span>
+                <TabsTrigger value="channels" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <Radio aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">البث</span>
                 </TabsTrigger>
-                <TabsTrigger value="wifi" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <Wifi className="w-4 h-4" /><span className="hidden sm:inline">الواي فاي</span>
+                <TabsTrigger value="wifi" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <Wifi aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">الواي فاي</span>
                 </TabsTrigger>
-                <TabsTrigger value="portfolio" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <Palette className="w-4 h-4" /><span className="hidden sm:inline">الأعمال</span>
+                <TabsTrigger value="portfolio" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <Palette aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">الأعمال</span>
                 </TabsTrigger>
-                <TabsTrigger value="referrals" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <Gift className="w-4 h-4" /><span className="hidden sm:inline">الإحالات</span>
+                <TabsTrigger value="referrals" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <Gift aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">الإحالات</span>
                 </TabsTrigger>
-                <TabsTrigger value="clients" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <Star className="w-4 h-4" /><span className="hidden sm:inline">العملاء</span>
+                <TabsTrigger value="clients" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <Star aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">العملاء</span>
                 </TabsTrigger>
-                <TabsTrigger value="ai_tools" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <Brain className="w-4 h-4" /><span className="hidden sm:inline">أدوات AI</span>
+                <TabsTrigger value="ai_tools" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <Brain aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">أدوات AI</span>
                 </TabsTrigger>
-                <TabsTrigger value="tech_blog" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <ShieldCheck className="w-4 h-4" /><span className="hidden sm:inline">التدوينات</span>
+                <TabsTrigger value="tech_blog" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <ShieldCheck aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">التدوينات</span>
                 </TabsTrigger>
-                <TabsTrigger value="content_access" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <Eye className="w-4 h-4" /><span className="hidden sm:inline">محتوى الزوار</span>
+                <TabsTrigger value="content_access" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <Eye aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">محتوى الزوار</span>
                 </TabsTrigger>
-                <TabsTrigger value="platform" className="flex items-center gap-1 text-xs py-2 px-2">
-                  <Cog className="w-4 h-4" /><span className="hidden sm:inline">إدارة المنصة</span>
+                <TabsTrigger value="platform" className="group flex min-h-28 min-w-0 flex-col gap-3 whitespace-normal rounded-lg border border-border bg-card px-3 py-4 text-sm font-semibold text-card-foreground shadow-card transition-colors duration-200 hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=active]:border-primary data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-card motion-reduce:transition-none">
+                  <Cog aria-hidden="true" className="h-7 w-7 shrink-0 text-primary" /><span className="w-full break-words text-center leading-relaxed">إدارة المنصة</span>
                 </TabsTrigger>
               </TabsList>
             </div>

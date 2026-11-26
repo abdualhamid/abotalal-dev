@@ -5,3 +5,6 @@
 - [x] Inspect existing app icons and installability configuration.
 - [x] Add home-screen manifest, existing-brand icons, and user-triggered install controls without offline caching.
 - [x] Verify manifest, preview safety, Android/iOS install states, and summarize publication requirement.
+
+- [x] Convert only the admin section navigation to a responsive card grid.
+- [x] Verify all existing sections and keyboard navigation on mobile and desktop without publishing.
